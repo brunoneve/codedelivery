@@ -59,4 +59,10 @@ class ProductsController extends Controller
         $this->repository->update($data, $id);
         return redirect()->route('admin.products.index');
     }
+
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+        return redirect()->route('admin.products.index');
+    }
 }

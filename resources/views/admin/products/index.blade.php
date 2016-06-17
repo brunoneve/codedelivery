@@ -27,7 +27,7 @@
                         <a href="{{route('admin.products.edit', ['id' => $product->id])}}" class="btn btn-default btn-sm" title="Editar Produto">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
-                        <a href="{{route('admin.products.edit', ['id' => $product->id])}}" class="btn btn-danger btn-sm" title="Editar Produto">
+                        <a href="{{route('admin.products.destroy', ['id' => $product->id])}}" class="btn btn-danger btn-sm" title="Editar Produto">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>

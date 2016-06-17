@@ -19,5 +19,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::submit('Criar Produto',['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Salvar',['class' => 'btn btn-primary']) !!}
+    {!! Form::button('Voltar',['class' => 'btn btn-default']) !!}
 </div>
