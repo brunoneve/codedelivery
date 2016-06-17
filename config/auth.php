@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => CodeDelivery\User::class,
+    'model' => CodeDelivery\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
