@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="container">
-        <h3> Nova Categoria </h3>
+        <h3> Novo Produto </h3>
 
         @include('errors._check')
 
-        {!! Form::open(['route' => 'admin.categories.store']) !!}
+        {!! Form::open(['route' => 'admin.products.store']) !!}
 
-        @include('admin.categories._form')
+        @include('admin.products._form')
 
         {!! Form::close() !!}
 

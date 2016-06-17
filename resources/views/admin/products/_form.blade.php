@@ -4,5 +4,20 @@
 </div>
 
 <div class="form-group">
-    {!! Form::submit('Criar Categoria',['class' => 'btn btn-primary']) !!}
+    {!! Form::label('category','Categoria:') !!}
+    {!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('description','Descrição:') !!}
+    {!! Form::textarea('description', null, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('price','Preço:') !!}
+    {!! Form::text('price', null, ['class'=>'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::submit('Criar Produto',['class' => 'btn btn-primary']) !!}
 </div>

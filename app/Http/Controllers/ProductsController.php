@@ -3,8 +3,9 @@
 namespace CodeDelivery\Http\Controllers;
 
 use CodeDelivery\Http\Requests;
+use CodeDelivery\Repositories\CategoryRepository;
 use CodeDelivery\Repositories\ProductRepository;
-use CodeDelivery\Http\Requests\AdminCategoryRequest;
+use CodeDelivery\Http\Requests\AdminProductRequest;
 
 
 class ProductsController extends Controller
@@ -12,55 +13,50 @@ class ProductsController extends Controller
 
 
     /**
-     * @var ProductsController
+     * @var ProductRepository
      */
     private $repository;
 
-    public function __construct(ProductRepository $repository)
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
+
+    public function __construct(ProductRepository $repository, CategoryRepository $categoryRepository)
     {
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
     }
 
-    /**
-     * @return mixed
-     */
     public function index()
     {
-        $categories = $this->repository->paginate();
-        return view('admin.categories.index', compact('categories'));
+        $products = $this->repository->paginate();
+        return view('admin.products.index', compact('products'));
     }
 
-    /**
-     * @return mixed
-     */
     public function create(){
-        return view('admin.categories.create');
+        $categories = $this->categoryRepository->categorias();
+        return view('admin.products.create', compact('categories'));
     }
 
-    /**
-     * @param AdminCategoryRequest $request
-     * @return mixed
-     */
-    public function store(AdminCategoryRequest $request)
+    public function store(AdminProductRequest $request)
     {
         $data = $request->all();
         $this->repository->create($data);
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.products.index');
     }
 
-    /**
-     * @param $id
-     */
     public function edit($id)
     {
-        $category = $this->repository->find($id);
-        return view('admin.categories.edit', compact('category'));
+        $product = $this->repository->find($id);
+        $categories = $this->categoryRepository->categorias();
+        return view('admin.products.edit', compact('product','categories'));
     }
 
-    public function update(AdminCategoryRequest $request, $id)
+    public function update(AdminProductRequest $request, $id)
     {
         $data = $request->all();
         $this->repository->update($data, $id);
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.products.index');
     }
 }
