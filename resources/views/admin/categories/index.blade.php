@@ -20,7 +20,12 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>
-                        <a href="{{route('admin.categories.edit', ['id' => $category->id])}}" class="btn btn-default btn-sm">Editar</a>
+                        <a href="{{route('admin.categories.edit', ['id' => $category->id])}}" class="btn btn-default btn-sm" title="Excluir Categoria">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a href="{{route('admin.categories.destroy', ['id' => $category->id])}}" class="btn btn-danger btn-sm" title="Excluir Categoria">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
                     </td>
                 </tr>
             @endforeach

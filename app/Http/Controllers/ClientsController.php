@@ -27,7 +27,7 @@ class ClientsController extends Controller
     public function index()
     {
         $clients = $this->repository->paginate();
-        return view('admin.clients.index', compact('$clients'));
+        return view('admin.clients.index', compact('clients'));
     }
 
     /**
@@ -54,7 +54,7 @@ class ClientsController extends Controller
     public function edit($id)
     {
         $client = $this->repository->find($id);
-        return view('admin.clients.edit', compact('$client'));
+        return view('admin.clients.edit', compact('client'));
     }
 
     public function update(AdminClientRequest $request, $id)
