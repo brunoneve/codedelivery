@@ -35,11 +35,8 @@
                     </td>
                     <td>{{ $order->status }}</td>
                     <td>
-                        <a href="" class="btn btn-default btn-sm" title="Excluir Categoria">
+                        <a href="{{ route('admin.orders.edit', ['id' => $order->id]) }}" class="btn btn-default btn-sm" title="Excluir Categoria">
                             <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                        <a href="" class="btn btn-danger btn-sm" title="Excluir Categoria">
-                            <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
                 </tr>
