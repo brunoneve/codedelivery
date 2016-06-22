@@ -50,5 +50,10 @@ $factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $fa
         'total' => rand(5,200),
         'status' => 0
     ];
+});
 
+$factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator $faker) {
+    return [
+
+    ];
 });
