@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.checkrole', 'as' => 'ad
     Route::post('products/store', ['as' => 'products.store', 'uses' => 'ProductsController@store']);
     Route::get('products/delete/{id}', ['as' => 'products.destroy', 'uses' => 'ProductsController@destroy']);
 
+    Route::get('orders', ['as' => 'orders.index', 'uses' => 'OrdersController@index']);
+
 });
 
 
