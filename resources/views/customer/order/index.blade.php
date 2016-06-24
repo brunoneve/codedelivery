@@ -26,5 +26,5 @@
             </tbody>
         </table>
     </div>
-    
+
 @endsection
