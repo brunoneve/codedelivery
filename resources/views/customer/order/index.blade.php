@@ -10,9 +10,12 @@
 
         <table class="table table-bordered">
             <thead>
-                <tr>ID</tr>
-                <tr>Total</tr>
-                <tr>Status</tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+
             </thead>
 
             <tbody>

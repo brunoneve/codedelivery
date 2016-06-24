@@ -39,7 +39,7 @@ class OrderService
 
     public function create(array $data)
     {
-        DB::beginTransaction();
+        \DB::beginTransaction();
         try {
             $data['status'] = 0;
             if(isset($data['cupom_code'])){
@@ -51,7 +51,7 @@ class OrderService
             }
 
             $items = $data['items'];
-            unset($items);
+            unset($data['items']);
 
             $order = $this->orderRepository->create($data);
             $total = 0;

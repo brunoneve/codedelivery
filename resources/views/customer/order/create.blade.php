@@ -8,7 +8,7 @@
 
 
         <div class="container">
-            {!! Form::open(['class' => 'form']) !!}
+            {!! Form::open(['route' => 'customer.order.store', 'class' => 'form']) !!}
 
             <div class="form-group">
                 <label>Total:</label>
