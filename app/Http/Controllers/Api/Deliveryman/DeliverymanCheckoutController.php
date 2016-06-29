@@ -51,31 +51,20 @@ class DeliverymanCheckoutController extends Controller
 
         return $orders;
     }
-    public function create()
-    {
-        $products = $this->productRepository->products();
-        return view('customer.order.create', compact('products'));
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->all();
-        $id = Authorizer::getResourceOwnerId();
-
-        $clientId = $this->userRepository->find($id)->client->id;
-        $data['client_id'] = $clientId;
-        $order = $this->service->create($data);
-        $order = $this->repository->with('items')->find($order->id);
-        return $order;
-
-    }
 
     public function show($id)
     {
-        $order = $this->repository->with(['client','items','cupom'])->find($id);
-        $order->items->each(function($item){
-            $item->product;
-        });
-        return $order;
+        $idDeliveryman = Authorizer::getResourceOwnerId();
+        return $this->repository->getByIdAndDeliveryman($id,$idDeliveryman);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $idDeliveryman = Authorizer::getResourceOwnerId();
+        $order = $this->service->updateStatus($id,$idDeliveryman,$request->get('status'));
+        if($order){
+            return $order;
+        }
+        abort(400,'Pedido não localizado.');
     }
 }
