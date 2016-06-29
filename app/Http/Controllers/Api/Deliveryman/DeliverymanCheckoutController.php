@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeDelivery\Http\Controllers\Api\Client;
+namespace CodeDelivery\Http\Controllers\Api\Deliveryman;
 
 use CodeDelivery\Http\Controllers\Controller;
 use CodeDelivery\Http\Requests;
@@ -11,10 +11,8 @@ use Illuminate\Http\Request;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 
-class ClientCheckoutController extends Controller
+class DeliverymanCheckoutController extends Controller
 {
-
-
     /**
      * @var OrderRepository
      */
@@ -23,7 +21,6 @@ class ClientCheckoutController extends Controller
      * @var UserRepository
      */
     private $userRepository;
-
     /**
      * @var OrderService
      */
@@ -48,10 +45,8 @@ class ClientCheckoutController extends Controller
     public function index()
     {
         $id = Authorizer::getResourceOwnerId();
-
-        $clientId = $this->userRepository->find($id)->client->id;
-        $orders = $this->repository->with('items')->scopeQuery(function($query) use ($clientId) {
-           return $query->where('client_id', '=',$clientId);
+        $orders = $this->repository->with('items')->scopeQuery(function($query) use ($id) {
+           return $query->where('user_deliveryman_id', '=',$id);
         })->paginate();
 
         return $orders;
