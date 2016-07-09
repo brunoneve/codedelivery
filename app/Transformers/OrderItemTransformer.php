@@ -13,6 +13,9 @@ class OrderItemTransformer extends TransformerAbstract
 {
 
 
+    /**
+     * @var array
+     */
     protected $defaultIncludes = ['product'];
     /**
      * Transform the \OrderItem entity
@@ -32,7 +35,12 @@ class OrderItemTransformer extends TransformerAbstract
         ];
     }
 
-    public function includeProduct(OrderItem $model){
+    /**
+     * @param OrderItem $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeProduct(OrderItem $model)
+    {
         return $this->item($model->product, new ProductTransformer());
     }
 }
