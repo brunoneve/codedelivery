@@ -2,11 +2,11 @@
 
 namespace CodeDelivery\Repositories;
 
+use CodeDelivery\Presenters\CupomPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\CupomRepository;
 use CodeDelivery\Models\Cupom;
-use CodeDelivery\Validators\CupomValidator;
 
 /**
  * Class CupomRepositoryEloquent
@@ -24,7 +24,11 @@ class CupomRepositoryEloquent extends BaseRepository implements CupomRepository
         return Cupom::class;
     }
 
-    
+
+    public function presenter()
+    {
+        return CupomPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria

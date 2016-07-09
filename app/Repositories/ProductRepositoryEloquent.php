@@ -6,7 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Models\Product;
-use CodeDelivery\Validators\ProductValidator;
+use CodeDelivery\Presenters\ProductPresenter;
 
 /**
  * Class ProductRepositoryEloquent
@@ -30,7 +30,13 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
         return Product::class;
     }
 
-    
+    /**
+     * @return mixed
+     */
+    public function presenter()
+    {
+        return ProductPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria
