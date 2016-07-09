@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Repositories;
 
+use CodeDelivery\Presenters\OrderPresenter;
 use Illuminate\Support\Collection;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -25,6 +26,8 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
         }
         return $result;
     }
+
+
     /**
      * Specify Model class name
      *
@@ -35,7 +38,10 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
         return Order::class;
     }
 
-    
+    public function presenter()
+    {
+        return OrderPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria
