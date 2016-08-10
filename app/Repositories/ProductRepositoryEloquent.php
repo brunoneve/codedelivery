@@ -14,7 +14,7 @@ use CodeDelivery\Presenters\ProductPresenter;
  */
 class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
 {
-
+    protected $skipPresenter = true;
 
     public function products()
     {
