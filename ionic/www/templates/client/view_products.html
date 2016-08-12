@@ -6,11 +6,10 @@
     <ion-content class="padding has-subheader">
 
         <ion-list>
-            <ion-item ng-repeat="o in products">
+            <ion-item ng-repeat="o in products" ng-click="addItem(o)">
                 {{ o.name }}
                 <span class="item-note">
                     <i class="ion ion-cash"> {{ o.price }}</i>
-
                 </span>
             </ion-item>
         </ion-list>
