@@ -5,12 +5,19 @@
     </div>
     <ion-content class="padding has-subheader">
 
-        <ion-list>
+        <ion-list show-delete="showDelete">
             <ion-item ng-repeat="o in items">
-                {{ o.name }}
-                <span class="item-note">
-                    <i class="ion ion-cash"> {{ o.price }}</i>
-                </span>
+                <h2>{{ o.name }}</h2>
+                <div class="row">
+                    <div class="col">
+                        Qtd: {{ o.qtd }} <br />
+                        <i class="ion ion-cash"> {{ o.price }}</i>
+                    </div>
+                    <div class="col text-right">
+                        <i class="ion ion-social-usd"> {{ o.qtd * o.price }}</i>
+                    </div>
+                </div>
+                <ion-delete-button class="ion ion-minus-circled"></ion-delete-button>
             </ion-item>
         </ion-list>
 
