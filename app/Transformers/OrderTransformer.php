@@ -22,10 +22,28 @@ class OrderTransformer extends TransformerAbstract
      */
     public function transform(Order $model)
     {
+        switch ($model->status){
+            case 0:
+                $statusText = 'Pendente';
+                break;
+            case 1:
+                $statusText = 'A caminho';
+                break;
+            case 2:
+                $statusText = 'Entregue';
+                break;
+            case 3:
+                $statusText = 'Cancelado';
+                break;
+            default:
+                $statusText = 'Errro Status';
+                break;
+        }
         return [
             'id'         => (int) $model->id,
             'total'      => (float) $model->total,
             'status'     => (int) $model->status,
+            'statusText' => $statusText,
             /* place your other model properties here */
 
             'created_at' => $model->created_at,
