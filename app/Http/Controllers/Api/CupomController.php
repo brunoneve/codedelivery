@@ -1,29 +1,28 @@
 <?php
 
-namespace CodeDelivery\Http\Controllers\Api\Client;
+namespace CodeDelivery\Http\Controllers\Api;
 
 use CodeDelivery\Http\Controllers\Controller;
-use CodeDelivery\Repositories\ProductRepository;
+use CodeDelivery\Repositories\CupomRepository;
 
-class ClientProductController extends Controller
+class CupomController extends Controller
 {
     /**
-     * @var ProductRepository
+     * @var CupomRepository
      */
     private $repository;
 
     /**
-     * ClientProductController constructor.
-     * @param ProductRepository $repository
+     * CupomController constructor.
+     * @param CupomRepository $repository
      */
-    public function __construct(ProductRepository $repository)
+    public function __construct(CupomRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function index()
+    public function show($code)
     {
-        $products = $this->repository->skipPresenter(false)->all();
-        return $products;
+        return $this->repository->skipPresenter(false)->findByCode($code);
     }
 }
